@@ -3,14 +3,14 @@
 #include <stdio.h>
 
 /********************************************************************
-*Struktora do przechowywania wêz³a listy: 			*
-* -wskaŸnik na kolejny wêze³ 					*
-* -wskaŸnik na poprzedni wêze³ 					*
-* -d³ugoœæ napisu w œrodku, inicjalnie 0, po tym iterujemy	*
-* -iloœæ miejsca na napis, inicjalnie 32 			*
-* -wskaŸnik na napis wewn¹trz 					*
+*Struktora do przechowywania wÄ™zÅ‚a listy: 			*
+* -wskaÅºnik na kolejny wÄ™zeÅ‚ 					*
+* -wskaÅºnik na poprzedni wÄ™zeÅ‚ 					*
+* -dÅ‚ugoÅ›Ä‡ napisu w Å›rodku, inicjalnie 0, po tym iterujemy	*
+* -iloÅ›Ä‡ miejsca na napis, inicjalnie 32 			*
+* -wskaÅºnik na napis wewnÄ…trz 					*
 *********************************************************************/
-typedef struct node // WÊZE£ LISTY
+typedef struct node // WÄ˜ZEÅ LISTY
 {
 struct node *next; // ->
 struct node *prev;  // <-
@@ -28,16 +28,16 @@ int counter;
 int max_size;
 } OrgList;
 /********************************************************************
-*Funkcja dodaj¹ca znak do wêz³a (adres wêz³a, znak do dodania) *
-* poczatkowo sprawdzenie czy napis siê zmieœci, *
-* jeœli siê nie zmieœci to alokujemy 2 razy tyle pamiêci co by³o *
+*Funkcja dodajÄ…ca znak do wÄ™zÅ‚a (adres wÄ™zÅ‚a, znak do dodania) *
+* poczatkowo sprawdzenie czy napis siÄ™ zmieÅ›ci, *
+* jeÅ›li siÄ™ nie zmieÅ›ci to alokujemy 2 razy tyle pamiÄ™ci co byÅ‚o *
 * *
 * wpisanie znaku pod i=rozmiar napisu + 1 *
 * *
 *********************************************************************/
-void append(node *node, char c) // add, DODAJ WÊZE£
+void append(node *node, char c) // add, DODAJ WÄ˜ZEÅ
 {
-if (node->length == node->size) // wstêpny warunek na to czy dodatkowy char sie zmiesci w napisie
+if (node->length == node->size) // wstÄ™pny warunek na to czy dodatkowy char sie zmiesci w napisie
 {
 node->size *= 2; // powiekszanie pamieci ze wspolczynnikiem x 2
 node->str = realloc(node->str, node->size);
@@ -45,16 +45,16 @@ node->str = realloc(node->str, node->size);
 node->str[node->length++] = c; // dopisujemy znak do str[aktualna dlugosc napisu++]
 }
 /********************************************************************
-*Funkcja wyœwietlacj¹ca napis ze œrodka wêz³a(adres wêz³a) *
+*Funkcja wyÅ›wietlacjÄ…ca napis ze Å›rodka wÄ™zÅ‚a(adres wÄ™zÅ‚a) *
 * wyczyszczenie linii po poprzenim napisie *
-* wypisanie napisu z danego wêz³a listy *
+* wypisanie napisu z danego wÄ™zÅ‚a listy *
 * *
 * *
 * *
 *********************************************************************/
 void display(node *node)
 {
-printf("\r                                                                               \r"); // powrót do pocz¹tku linii wypisanie 79 spacji i powrót do pocz¹tku linii (CR) - szerokosc konsoli
+printf("\r                                                                               \r"); // powrÃ³t do poczÄ…tku linii wypisanie 79 spacji i powrÃ³t do poczÄ…tku linii (CR) - szerokosc konsoli
 for (int i = 0; i < node->length; i++)
 printf("%c", node->str[i]); // wypisanie calej tablicy znakow spod str[] w petli
 }
@@ -63,12 +63,12 @@ int main()
 {
 int c;
 
-node* head = (node *)malloc(sizeof(node)); // inicjalizacja pierwszego wêz³a listy(g³owa), alokacja pamieci pod strukture
-head->length = 0; // inicjalnie d³ugoœæ napisu w œrodku: 0
-head->prev = NULL; // inicjalnie nie ma el. poprzedniego, wskaŸnik wskazuje na nulla
-head->next = NULL; // inicjalnie nie ma el. nastêpnego, wskaŸnik wskazuje na nulla
-head->size = 32; // inicjalnie iloœæ miejsca na napis w œrodku : 32
-head->str = (char*)malloc(head->size); // alokacja pamiêci pod napis wewn¹trz struktury
+node* head = (node *)malloc(sizeof(node)); // inicjalizacja pierwszego wÄ™zÅ‚a listy(gÅ‚owa), alokacja pamieci pod strukture
+head->length = 0; // inicjalnie dÅ‚ugoÅ›Ä‡ napisu w Å›rodku: 0
+head->prev = NULL; // inicjalnie nie ma el. poprzedniego, wskaÅºnik wskazuje na nulla
+head->next = NULL; // inicjalnie nie ma el. nastÄ™pnego, wskaÅºnik wskazuje na nulla
+head->size = 32; // inicjalnie iloÅ›Ä‡ miejsca na napis w Å›rodku : 32
+head->str = (char*)malloc(head->size); // alokacja pamiÄ™ci pod napis wewnÄ…trz struktury
 
 OrgList* organizer = (OrgList *)malloc(sizeof(OrgList));
 organizer->first = head->prev;
@@ -77,12 +77,12 @@ organizer->actual = head;
 organizer->counter = 0 ;
 organizer->max_size = 10;
 
-do // g³ówna pêtla programu
+do // gÅ‚Ã³wna pÄ™tla programu
 {
-c = getch(); //pobiera ka¿dy znak z klawiatury
+c = getch(); //pobiera kaÅ¼dy znak z klawiatury
 if (c == ',') //sterowanie na przyciskach < > ,przesuwa w lewo
 {
-if (head->prev) // sprawdzenie czy w ogóle jest wêze³ wczeœniej
+if (head->prev) // sprawdzenie czy w ogÃ³le jest wÄ™zeÅ‚ wczeÅ›niej
 {
 head = head->prev; // przesuniecie glowy w <-
 display(head);
@@ -90,22 +90,22 @@ display(head);
 }
 else if (c == '.') //sterowanie na przyciskach < > .przesuwa w prawo
 {
-if (head->next) // sprawdzenie czy w ogóle jest wêze³ póŸniej
+if (head->next) // sprawdzenie czy w ogÃ³le jest wÄ™zeÅ‚ pÃ³Åºniej
 {
 head = head->next; // przesuniecie glowy w ->
 display(head);
 }
 }
-else if (c == '\r') // enter wprowadza kolejny el. do pamiêci -> nowy wêze³ listy
+else if (c == '\r') // enter wprowadza kolejny el. do pamiÄ™ci -> nowy wÄ™zeÅ‚ listy
 {
 if (organizer->counter > 10)
 {
 //tu kod na zwolnienie najstarszego wezla i przebudowanie listy
 }
-printf("\r                                        \r"); // ewentualnie mo¿emy po ka¿dym wpisie daæ now¹ liniê
-node *oldHead = head; // przepisanie g³owy listy do oldHead
-while (head->next != NULL) // dopóki s¹ kolejne elementy listy
-head = head->next; // przepisujemy kolejny element do wczeœniejszego
+printf("\r                                        \r"); // ewentualnie moÅ¼emy po kaÅ¼dym wpisie daÄ‡ nowÄ… liniÄ™
+node *oldHead = head; // przepisanie gÅ‚owy listy do oldHead
+while (head->next != NULL) // dopÃ³ki sÄ… kolejne elementy listy
+head = head->next; // przepisujemy kolejny element do wczeÅ›niejszego
 head->length = oldHead->length;
 head->size = oldHead->size;
 head->str = realloc(head->str, head->size);
